@@ -172,3 +172,9 @@ function hideSections () {
 }
 //Invoke loadImage to set src attribute
 loadRandomPoster();
+
+
+//class Posters uses values from form values
+//save that instance of Poster to an array
+//change back to main poster view
+//use instance of poster to create display poster
