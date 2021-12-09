@@ -3,6 +3,8 @@
 var randomButton = document.querySelector(".show-random");
 var makePosterButton = document.querySelector(".show-form");
 var showMainButton = document.querySelector(".show-main");
+var showSavedButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector('.back-to-main');
 //sections
 var formSection = document.querySelector(".poster-form");
 var displaySection = document.querySelector(".main-poster");
@@ -118,18 +120,23 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// randomButton.onclick = loadRandomPoster;
+
 randomButton.addEventListener('click',loadRandomPoster);
 
-// makePosterButton.onclick = showSection;
 makePosterButton.addEventListener('click', function() {
-  showSection();
+  showSection(formSection);
 });
 
-// showMainButton.onclick = showSection ;
-
 showMainButton.addEventListener('click', function() {
-  showSection();
+  showSection(displaySection);
+});
+
+showSavedButton.addEventListener('click', function() {
+  showSection(savedSection);
+});
+
+backToMainButton.addEventListener('click', function() {
+  showSection(displaySection);
 });
 
 // functions and event handlers go here 👇
@@ -145,10 +152,23 @@ function loadRandomPoster () {
   posterTitle.innerText = titles[getRandomIndex(titles)];
 }
 
-function showSection () {
-  formSection.classList.toggle("hidden");
-  displaySection.classList.toggle("hidden");
+function showSection (section) {
+  hideSections();
+  section.classList.toggle('hidden');
 }
 
+function hideSections () {
+  if(!displaySection.classList.contains('hidden')) {
+    displaySection.classList.toggle('hidden');
+  }
+
+  if(!savedSection.classList.contains('hidden')) {
+    savedSection.classList.toggle('hidden');
+  }
+
+  if(!formSection.classList.contains('hidden')) {
+    formSection.classList.toggle('hidden');
+  }
+}
 //Invoke loadImage to set src attribute
 loadRandomPoster();
