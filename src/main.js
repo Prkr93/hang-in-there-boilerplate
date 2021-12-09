@@ -1,21 +1,25 @@
+//var Poster = require('./poster');
+
 // query selector variables go here 👇
-//buttons
+//button selectors
 var randomButton = document.querySelector(".show-random");
 var makePosterButton = document.querySelector(".show-form");
 var showMainButton = document.querySelector(".show-main");
 var showSavedButton = document.querySelector(".show-saved");
 var backToMainButton = document.querySelector('.back-to-main');
-//sections
+var makeOwnButton = document.querySelector('.make-poster');
+//section selectors
 var formSection = document.querySelector(".poster-form");
 var displaySection = document.querySelector(".main-poster");
 var savedSection = document.querySelector('.saved-posters');
-//poster elements
+//poster element selectors
 var posterImg = document.querySelector(".poster-img");
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
-
-
-
+//input selectors
+var inputURL = document.querySelector("#poster-image-url").value;
+var inputTitle = document.querySelector("#poster-title").value;
+var inputQuote = document.querySelector("#poster-quote").value;
 
 
 // we've provided you with some data to work with 👇
@@ -136,6 +140,12 @@ showSavedButton.addEventListener('click', function() {
 });
 
 backToMainButton.addEventListener('click', function() {
+  showSection(displaySection);
+});
+
+makeOwnButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  var myPoster = new Poster(inputURL, inputTitle, inputQuote);
   showSection(displaySection);
 });
 
