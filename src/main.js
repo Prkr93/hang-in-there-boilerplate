@@ -1,12 +1,20 @@
 // query selector variables go here 👇
+//buttons
+var randomButton = document.querySelector(".show-random");
+var makePosterButton = document.querySelector(".show-form");
+var showMainButton = document.querySelector(".show-main");
+//sections
+var formSection = document.querySelector(".poster-form");
+var displaySection = document.querySelector(".main-poster");
+var savedSection = document.querySelector('.saved-posters');
+//poster elements
 var posterImg = document.querySelector(".poster-img");
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
-var randomButton = document.querySelector(".show-random");
-var makePosterButton = document.querySelector(".show-form");
-var posterForm = document.querySelector(".poster-form");
-var mainPoster = document.querySelector(".main-poster");
-var showMainButton = document.querySelector(".show-main");
+
+
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,9 +118,19 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.onclick = loadRandomPoster;
-makePosterButton.onclick = showForm;
-showMainButton.onclick = showForm;
+// randomButton.onclick = loadRandomPoster;
+randomButton.addEventListener('click',loadRandomPoster);
+
+// makePosterButton.onclick = showSection;
+makePosterButton.addEventListener('click', function() {
+  showSection();
+});
+
+// showMainButton.onclick = showSection ;
+
+showMainButton.addEventListener('click', function() {
+  showSection();
+});
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -126,9 +144,10 @@ function loadRandomPoster () {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
 }
-function showForm () {
-  posterForm.classList.toggle("hidden");
-  mainPoster.classList.toggle("hidden");
+
+function showSection () {
+  formSection.classList.toggle("hidden");
+  displaySection.classList.toggle("hidden");
 }
 
 //Invoke loadImage to set src attribute
