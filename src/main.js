@@ -205,20 +205,19 @@ function createPoster() {
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    drawMiniPosters(savedPosters)
+    drawMiniPosters()
   }
 }
 
-function drawMiniPosters(posterArray) {
+function drawMiniPosters() {
   savedGrid.innerHTML = '';
-  posterArray.forEach(function (element) {
+  savedPosters.forEach(function (element) {
     var html = `<article class='mini-poster'>
         <img src=${element.imageURL} alt="">
         <h2>${element.title}</h2>
         <h4>${element.quote}</h4>
      </article>`;
     savedGrid.innerHTML += html;
-
   });
 }
 
