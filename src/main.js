@@ -17,9 +17,9 @@ var posterImg = document.querySelector(".poster-img");
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 //input selectors
-var inputURL = document.querySelector("#poster-image-url").value;
-var inputTitle = document.querySelector("#poster-title").value;
-var inputQuote = document.querySelector("#poster-quote").value;
+var inputURL = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
 
 
 // we've provided you with some data to work with 👇
@@ -145,7 +145,10 @@ backToMainButton.addEventListener('click', function() {
 
 makeOwnButton.addEventListener('click', function(event) {
   event.preventDefault();
-  var myPoster = new Poster(inputURL, inputTitle, inputQuote);
+  var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+  posterImg.src = myPoster.imageURL;
+  posterQuote.innerText = myPoster.quote;
+  posterTitle.innerText = myPoster.title;
   showSection(displaySection);
 });
 
@@ -180,6 +183,12 @@ function hideSections () {
     formSection.classList.toggle('hidden');
   }
 }
+
+function createPoster() {
+
+}
+
+
 //Invoke loadImage to set src attribute
 loadRandomPoster();
 
