@@ -145,14 +145,7 @@ backToMainButton.addEventListener('click', function() {
 
 makeOwnButton.addEventListener('click', function(event) {
   event.preventDefault();
-  var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
-  posterImg.src = myPoster.imageURL;
-  posterQuote.innerText = myPoster.quote;
-  posterTitle.innerText = myPoster.title;
-  images.push(myPoster.imageURL);
-  quotes.push(myPoster.quote);
-  titles.push(myPoster.title);
-  showSection(displaySection);
+  createPoster();
 });
 
 // functions and event handlers go here 👇
@@ -188,7 +181,14 @@ function hideSections () {
 }
 
 function createPoster() {
-
+  var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+  posterImg.src = myPoster.imageURL;
+  posterQuote.innerText = myPoster.quote;
+  posterTitle.innerText = myPoster.title;
+  images.push(myPoster.imageURL);
+  quotes.push(myPoster.quote);
+  titles.push(myPoster.title);
+  showSection(displaySection);
 }
 
 
