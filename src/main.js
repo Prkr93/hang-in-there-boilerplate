@@ -1,5 +1,4 @@
 //var Poster = require('./poster');
-
 // query selector variables go here 👇
 //button selectors
 var randomButton = document.querySelector(".show-random");
@@ -159,27 +158,26 @@ function loadRandomPoster (url, title, quote) {
   posterImg.src = images[getRandomIndex(images)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
-  console.log(images);
-  if (url.value.length !== 0) {
+  if (url.value.length) {
     posterImg.src = url.value;
     images.push(url.value);
   }
-  if (title.value.length !== 0) {
+  if (title.value.length) {
     posterQuote.innerText = title.value;
     titles.push(title.value);
   }
-  if (quote.value.length !== 0) {
+  if (quote.value.length) {
     posterTitle.innerText = quote.value;
     quotes.push(quote.value);
   }
 }
 
-function showSection (section) {
+function showSection(section) {
   hideSections();
   section.classList.toggle('hidden');
 }
 
-function hideSections () {
+function hideSections() {
   if(!displaySection.classList.contains('hidden')) {
     displaySection.classList.toggle('hidden');
   }
@@ -204,7 +202,6 @@ function createPoster() {
     titles.push(myPoster.title);
   }
   else {
-    //console.log("true");
     loadRandomPoster(inputURL, inputTitle, inputQuote);
   }
 
@@ -214,9 +211,3 @@ function createPoster() {
 
 //Invoke loadImage to set src attribute
 loadRandomPoster();
-
-
-//class Posters uses values from form values
-//save that instance of Poster to an array
-//change back to main poster view
-//use instance of poster to create display poster
