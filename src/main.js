@@ -20,7 +20,8 @@ var posterTitle = document.querySelector(".poster-title");
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
-
+// grid selectors
+var grid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -204,7 +205,21 @@ function createPoster() {
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
+    drawMiniPosters(savedPosters)
   }
+}
+
+function drawMiniPosters(posterArray) {
+  grid.innerHTML = '';
+  posterArray.forEach(function (element) {
+    var html = `<article class='mini-poster'>
+        <img src=${element.imageURL} alt="">
+        <h2 class="poster-title">${element.title}</h2>
+        <h4 class="poster-quote">${element.quote}</h4>
+     </article>`;
+    grid.innerHTML += html;
+
+  });
 }
 
 
