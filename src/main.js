@@ -181,13 +181,19 @@ function hideSections () {
 }
 
 function createPoster() {
-  var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
-  posterImg.src = myPoster.imageURL;
-  posterQuote.innerText = myPoster.quote;
-  posterTitle.innerText = myPoster.title;
-  images.push(myPoster.imageURL);
-  quotes.push(myPoster.quote);
-  titles.push(myPoster.title);
+  if(inputURL === true){
+    var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+    posterImg.src = myPoster.imageURL;
+    posterQuote.innerText = myPoster.quote;
+    posterTitle.innerText = myPoster.title;
+    images.push(myPoster.imageURL);
+    quotes.push(myPoster.quote);
+    titles.push(myPoster.title);
+  }
+  else {
+    loadRandomPoster();
+  }
+
   showSection(displaySection);
 }
 
