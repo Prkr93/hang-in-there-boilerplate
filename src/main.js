@@ -155,10 +155,23 @@ function getRandomIndex(array) {
 }
 
 //Get a random image src based off the function get random index
-function loadRandomPoster () {
+function loadRandomPoster (url, title, quote) {
   posterImg.src = images[getRandomIndex(images)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
+  console.log(images);
+  if (url.value.length !== 0) {
+    posterImg.src = url.value;
+    images.push(url.value);
+  }
+  if (title.value.length !== 0) {
+    posterQuote.innerText = title.value;
+    titles.push(title.value);
+  }
+  if (quote.value.length !== 0) {
+    posterTitle.innerText = quote.value;
+    quotes.push(quote.value);
+  }
 }
 
 function showSection (section) {
@@ -181,8 +194,8 @@ function hideSections () {
 }
 
 function createPoster() {
-  if(inputURL === true){
-    var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+  var myPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+  if(inputURL.value && inputTitle.value && inputQuote.value){
     posterImg.src = myPoster.imageURL;
     posterQuote.innerText = myPoster.quote;
     posterTitle.innerText = myPoster.title;
@@ -191,7 +204,8 @@ function createPoster() {
     titles.push(myPoster.title);
   }
   else {
-    loadRandomPoster();
+    //console.log("true");
+    loadRandomPoster(inputURL, inputTitle, inputQuote);
   }
 
   showSection(displaySection);
