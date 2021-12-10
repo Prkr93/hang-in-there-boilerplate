@@ -149,6 +149,9 @@ makeOwnButton.addEventListener('click', function(event) {
   posterImg.src = myPoster.imageURL;
   posterQuote.innerText = myPoster.quote;
   posterTitle.innerText = myPoster.title;
+  images.push(myPoster.imageURL);
+  quotes.push(myPoster.quote);
+  titles.push(myPoster.title);
   showSection(displaySection);
 });
 
