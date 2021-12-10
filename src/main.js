@@ -7,6 +7,7 @@ var showMainButton = document.querySelector(".show-main");
 var showSavedButton = document.querySelector(".show-saved");
 var backToMainButton = document.querySelector('.back-to-main');
 var makeOwnButton = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster');
 //section selectors
 var formSection = document.querySelector(".poster-form");
 var displaySection = document.querySelector(".main-poster");
@@ -147,6 +148,8 @@ makeOwnButton.addEventListener('click', function(event) {
   createPoster();
 });
 
+savePosterButton.addEventListener('click', savePoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -196,6 +199,12 @@ function createPoster() {
   }
 
   showSection(displaySection);
+}
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 
