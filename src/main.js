@@ -142,7 +142,6 @@ makeOwnButton.addEventListener('click', function(event) {
 });
 
 savedSection.addEventListener('dblclick', function(event) {
-  //console.log(event.target);
   deleteMiniPoster(event.target);
 });
 
@@ -186,7 +185,7 @@ function hideSections() {
 }
 
 function createPoster() {
-  var currentPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
+  currentPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
   if(inputURL.value){
     displayPoster(currentPoster);
   }
