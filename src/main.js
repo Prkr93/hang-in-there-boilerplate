@@ -22,6 +22,7 @@ var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 //grid selectors
 var savedGrid = document.querySelector('.saved-posters-grid');
+//var miniPosters = document.querySelectorAll('.mini-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -149,6 +150,12 @@ makeOwnButton.addEventListener('click', function(event) {
   createPoster();
 });
 
+savedSection.addEventListener('dblclick', function(event) {
+  console.log(event.target);
+  deleteMiniPoster(event.target);
+  // if(event.target.tagName === 'article') event.target.remove();
+});
+
 savePosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
@@ -205,15 +212,15 @@ function createPoster() {
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    drawMiniPosters()
+    drawMiniPosters();
   }
 }
 
 function drawMiniPosters() {
   savedGrid.innerHTML = '';
   savedPosters.forEach(function (element) {
-    var html = `<article class='mini-poster'>
-        <img src=${element.imageURL} alt="">
+    var html = `<article id=${element.id} class='mini-poster'>
+    <img src=${element.imageURL} alt="">
         <h2>${element.title}</h2>
         <h4>${element.quote}</h4>
      </article>`;
@@ -221,6 +228,23 @@ function drawMiniPosters() {
   });
 }
 
+function removePoster (id) {
+  for(var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id === id) {
+      savedPosters.splice(i, 1);
+    }
+  }
+}
+
+function deleteMiniPoster(eventTarget) {
+  console.log(eventTarget.parentNode);
+  if(eventTarget.id) {
+    var id = eventTarget.id;
+    eventTarget.remove();
+    removePoster(id);
+}
+
+}
 
 //Invoke loadImage to set src attribute
 loadRandomPoster();
