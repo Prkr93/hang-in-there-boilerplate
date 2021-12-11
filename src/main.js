@@ -1,6 +1,3 @@
-//var Poster = require('./poster');
-// query selector variables go here 👇
-//button selectors
 var randomButton = document.querySelector(".show-random");
 var makePosterButton = document.querySelector(".show-form");
 var showMainButton = document.querySelector(".show-main");
@@ -8,23 +5,18 @@ var showSavedButton = document.querySelector(".show-saved");
 var backToMainButton = document.querySelector('.back-to-main');
 var makeOwnButton = document.querySelector('.make-poster');
 var savePosterButton = document.querySelector('.save-poster');
-//section selectors
 var formSection = document.querySelector(".poster-form");
 var displaySection = document.querySelector(".main-poster");
 var savedSection = document.querySelector('.saved-posters');
-//poster element selectors
 var posterImg = document.querySelector(".poster-img");
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
-//input selectors
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
-//grid selectors
 var savedGrid = document.querySelector('.saved-posters-grid');
-//var miniPosters = document.querySelectorAll('.mini-poster');
 
-// we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -125,7 +117,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
 
 randomButton.addEventListener('click',loadRandomPoster);
 
@@ -151,20 +142,18 @@ makeOwnButton.addEventListener('click', function(event) {
 });
 
 savedSection.addEventListener('dblclick', function(event) {
-  console.log(event.target);
+  //console.log(event.target);
   deleteMiniPoster(event.target);
-  // if(event.target.tagName === 'article') event.target.remove();
 });
 
 savePosterButton.addEventListener('click', savePoster);
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//Get a random image src based off the function get random index
+
 function loadRandomPoster () {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
   displayPoster(currentPoster);
@@ -205,7 +194,6 @@ function createPoster() {
     currentPoster.imageURL = images[getRandomIndex(images)]
     displayPoster(currentPoster);
   }
-
   showSection(displaySection);
 }
 
@@ -230,21 +218,26 @@ function drawMiniPosters() {
 
 function removePoster (id) {
   for(var i = 0; i < savedPosters.length; i++) {
-    if(savedPosters[i].id === id) {
+    if (savedPosters[i].id == id) {
       savedPosters.splice(i, 1);
     }
   }
 }
 
 function deleteMiniPoster(eventTarget) {
-  console.log(eventTarget.parentNode);
-  if(eventTarget.id) {
+  if (eventTarget.id) {
     var id = eventTarget.id;
     eventTarget.remove();
     removePoster(id);
+    return;
+  }
+
+  if (eventTarget.parentNode.id) {
+    var id = eventTarget.parentNode.id;
+    eventTarget.parentNode.remove();
+    removePoster(id);
+  }
 }
 
-}
 
-//Invoke loadImage to set src attribute
 loadRandomPoster();
