@@ -25,7 +25,14 @@ Motivate Me is here to help!
 - git
 - OOP
 
+## How to View
+User should be able to view our project at https://prkr93.github.io/hang-in-there-boilerplate/
+
 ## Set Up
 1. Clone this repo to your machine
 2. cd into the repository
 3. Run the command `open index.html`
+
+## Contributors
+https://github.com/Romeslayer
+https://github.com/Prkr93
