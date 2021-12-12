@@ -188,11 +188,23 @@ function createPoster() {
   currentPoster = new Poster(inputURL.value, inputTitle.value, inputQuote.value);
   if(inputURL.value){
     displayPoster(currentPoster);
-  }
-  else {
+  } else {
     currentPoster.imageURL = images[getRandomIndex(images)]
     displayPoster(currentPoster);
   }
+
+  if(!images.includes(inputURL.value)) {
+    images.push(inputURL.value);
+  }
+
+  if(!titles.includes(inputTitle.value)) {
+    titles.push(inputTitle.value);
+  }
+
+  if(!quotes.includes(inputQuote.value)) {
+    quotes.push(inputQuote.value);
+  }
+
   showSection(displaySection);
 }
 
@@ -207,10 +219,10 @@ function drawMiniPosters() {
   savedGrid.innerHTML = '';
   savedPosters.forEach(function (element) {
     var html = `<article id=${element.id} class='mini-poster'>
-    <img src=${element.imageURL} alt="">
+      <img src=${element.imageURL} alt="">
         <h2>${element.title}</h2>
         <h4>${element.quote}</h4>
-     </article>`;
+      </article>`;
     savedGrid.innerHTML += html;
   });
 }
