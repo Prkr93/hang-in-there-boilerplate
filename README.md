@@ -1,7 +1,7 @@
 # Motivate Me
 Are you tired, run down, listless? Do you poop out a parties? Are you down in the dumps?
 
-Motivate me is here to help!
+Motivate Me is here to help!
 
 ## Learning Goals
 - Write clean, DRY JavaScript to store our data
