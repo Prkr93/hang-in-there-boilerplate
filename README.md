@@ -20,6 +20,8 @@ Motivate Me is here to help!
 
 ## Technologies Used
 - Javascript
+- HTML
+- CSS
 
 ## Systems/Practices
 - git
